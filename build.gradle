@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        maven {
+            url 'https://nexus.avivaap.local/nexus/content/groups/public'
+        }
+    }
+    dependencies {
+        classpath 'com.thoughtworks.gauge.gradle:gauge-gradle-plugin:+'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'gauge'
+
+repositories {
+    maven {
+        url 'https://nexus.avivaap.local/nexus/content/groups/public'
+    }
+}
+
+dependencies {
+    implementation 'com.thoughtworks.gauge:gauge-java:+'
+    testCompile(
+        'com.squareup.okhttp3:okhttp:4.2.0',
+        'junit:junit:4.12'
+    )
+}
+
+task copyToLib(type: Copy) {
+    into "/libs"
+    from configurations.testRuntime
+}
+
+/*
+gauge {
+    specsDir = 'specs'
+}
+*/
