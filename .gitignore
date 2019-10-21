@@ -9,6 +9,7 @@ gauge_bin
 reports
 logs
 libs
+bin
 .gauge
 
 #
